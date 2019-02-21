@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MovingSprite : MonoBehaviour
 {
-    // store the boundaries of the platform
+    // store the left and right boundaries of the platform
+    // the sprite will not move beyond these bounds
     public float leftBoundary = 2f;
     public float rightBoundary = 1f;
 
     // keep track of if the sprite is moving right or left
+    // this can be set in the inspector for each gameobject
     public bool movingLeft = true;
 
     // store the start position of the vector
@@ -18,7 +20,7 @@ public class MovingSprite : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // store start position from position part of transform component of game object
+        // store this start position by taking the current position from the transform component of game object
         startPosition = transform.position;
     }
 
@@ -31,13 +33,13 @@ public class MovingSprite : MonoBehaviour
         // if the platform is moving left
         if (movingLeft == true)
         {
-            // move new position to the left
+            // move new position to the left by taking x component of current position, and moving it to the left a certain distance.
             newPosition.x = transform.position.x - 1f * Time.fixedDeltaTime;
         }
         // if movingLeft == false, ie, if movingLeft != true, ie, if moving right
         else
         {
-            //move new position to the right
+            //move new position to the right by taking x component of current position, and moving it to the right a certain distance.
             newPosition.x = transform.position.x + 1f * Time.fixedDeltaTime;
         }
 

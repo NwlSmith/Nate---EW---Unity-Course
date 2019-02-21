@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour {
+public class MovingObject : MonoBehaviour {
 
     // How far to the left the platform can travel from the starting position.
     public float leftBoundary = 3f;
