@@ -42,8 +42,8 @@ public class Coin : MonoBehaviour
             // GetComponent<AudioSource>().Play();
             // Destroy(gameObject,4f); // long delay for teaching purposes
 
-            // does it work now? Yes, the sound plays and then the sprite is destroyed
-            // how could we make it better? - hide sprite as soon as the player collides with it
+            // does it work now? Yes, the sound plays and then the sprite is destoryed
+            // how could we make it better? - hide sprite as soon as the playr collides with it
 
             // v5
             // final coin sound script
@@ -54,5 +54,4 @@ public class Coin : MonoBehaviour
 
         }
     }
-
 }
