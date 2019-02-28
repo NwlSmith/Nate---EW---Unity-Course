@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool alive = true;
 
     public float horizontalSpeed = 10.0f;
     public float jumpSpeed = 10.0f;
@@ -20,24 +19,21 @@ public class Player : MonoBehaviour
     // Update is called once per physics frame
     void FixedUpdate()
     {
-        if (alive == true)
+        float moveHorizonal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector2 targetVelocity = rb.velocity;
+
+        if (moveHorizonal != 0)
         {
-            float moveHorizonal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            Vector2 targetVelocity = rb.velocity;
-
-            if (moveHorizonal != 0)
-            {
-                targetVelocity.x = moveHorizonal * horizontalSpeed;
-            }
-
-            if (moveVertical > 0 && rb.velocity.y == 0)
-            {
-                targetVelocity.y = jumpSpeed;
-            }
-
-            rb.velocity = targetVelocity;
+            targetVelocity.x = moveHorizonal * horizontalSpeed;
         }
+
+        if (moveVertical > 0 && rb.velocity.y == 0)
+        {
+            targetVelocity.y = jumpSpeed;
+        }
+
+        rb.velocity = targetVelocity;
     }
 }

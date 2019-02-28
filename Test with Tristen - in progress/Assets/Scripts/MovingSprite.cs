@@ -5,11 +5,13 @@ using UnityEngine;
 public class MovingSprite : MonoBehaviour
 {
     // store the boundaries of the platform
-    public float leftBoundary = 2f;
-    public float rightBoundary = 1f;
+    public float distanceFromStart = 2f;
 
     // keep track of if the sprite is moving right or left
-    public bool movingLeft = true;
+    public bool movingRight = true;
+
+    // the speed at which the sprite will move
+    public float speed = 3f;
 
     // store the start position of the vector
     private Vector2 startPosition;
@@ -28,17 +30,30 @@ public class MovingSprite : MonoBehaviour
         // create an variable to store what will be the the new position, from the current position
         Vector2 newPosition = transform.position;
 
-        // if the platform is moving left
-        if (movingLeft == true)
+        //CHANGE THIS
+        // if movingRight == true, ie, if movingRight != false, ie, if moving right
+        if (movingRight == true)
         {
-            // move new position to the left
-            newPosition.x = transform.position.x - 1f * Time.fixedDeltaTime;
+            //move new position to the right by speed
+            newPosition.x = transform.position.x + speed * Time.fixedDeltaTime;
+            // if the newPosition.x is to the right of distanceFromStart, ie, out of bounds
+            if (newPosition.x > startPosition.x + distanceFromStart)
+            {
+                // move left
+                movingRight = false;
+            }
         }
-        // if movingLeft == false, ie, if movingLeft != true, ie, if moving right
+        // if the platform is moving left expand here
         else
         {
-            //move new position to the right
-            newPosition.x = transform.position.x + 1f * Time.fixedDeltaTime;
+            // move new position to the left by speed
+            newPosition.x = transform.position.x - speed * Time.fixedDeltaTime;
+            // if the newPosition.x is to the left of distanceFromStart, ie, out of bounds
+            if (newPosition.x < startPosition.x - distanceFromStart)
+            {
+                // make it move right
+                movingRight = true;
+            }
         }
 
         //use the rigidbody2d to set the current position to the updated new position
