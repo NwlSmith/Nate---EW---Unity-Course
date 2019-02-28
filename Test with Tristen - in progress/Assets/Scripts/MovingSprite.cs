@@ -30,8 +30,7 @@ public class MovingSprite : MonoBehaviour
         // create an variable to store what will be the the new position, from the current position
         Vector2 newPosition = transform.position;
 
-        //CHANGE THIS
-        // if movingRight == true, ie, if movingRight != false, ie, if moving right
+        // if the platform is moving right
         if (movingRight == true)
         {
             //move new position to the right by speed
@@ -43,7 +42,7 @@ public class MovingSprite : MonoBehaviour
                 movingRight = false;
             }
         }
-        // if the platform is moving left - expand here
+        // if movingRight == false, ie, if movingRight != true, ie, if moving left
         else
         {
             // move new position to the left by speed

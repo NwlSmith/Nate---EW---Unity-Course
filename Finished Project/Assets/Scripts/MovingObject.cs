@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class MovingObject : MonoBehaviour {
 
-    // How far to the left the platform can travel from the starting position.
-    public float leftBoundary = 3f;
-    // How far to the right the platform can travel from the starting position.
-    public float rightBoundary = 3f;
+    // How far to the left and right the platform can travel from the starting position.
+    public float distanceFromStart = 2f;
 
     // How fast the platform will move.
     public float speed = 3f;
 
-    // A boolean that says if the platform is currently moving left (movingLeft = true), or right (movingLeft = false)
-    public bool movingLeft;
+    // A boolean that says if the platform is currently moving right (movingRight = true), or right (movingRight = false)
+    public bool movingRight;
 
     // The position that the platform is when the game starts.
     private Vector2 startPos;
@@ -32,35 +30,34 @@ public class MovingObject : MonoBehaviour {
         // Because some parts of the position (X or Y) of the platform will not change, initially set the new position to the current position.
         Vector2 newPosition = transform.position; //  ask how you would do that?
 
-        // if the platform is moving left...
-        if (movingLeft) 
+        // if the platform is moving right...
+        if (movingRight) 
         {
             // Set the new x position of the platform to the the current x position of the platform,
-            // but moved to the LEFT by an amount based off of the speed of the platform and the amount of time that has passed since FixedUpdate was last called.
-            newPosition.x = transform.position.x - ( speed * Time.fixedDeltaTime );
-            // if the new position will place the platform to the left of the left-side boundary...
-            if (newPosition.x <= startPos.x - leftBoundary) 
+            // but moved to the RIGHT by an amount based off of the speed of the platform and
+            // the amount of time that has passed since FixedUpdate was last called.
+            newPosition.x = transform.position.x + (speed * Time.fixedDeltaTime);
+
+            // if the new position will place the platform to the RIGHT of the RIGHT-side boundary...
+            if (newPosition.x > startPos.x + distanceFromStart)
             {
-                // make it move Right on the next FixedUpdate by saying the the platform is NOT moving left
-                movingLeft = false; 
+                // make it move LEFT on the next FixedUpdate by saying the the platform IS moving left
+                movingRight = true;
             }
         }
-        // if movingLeft is false, ie, if moving RIGHT
+        // if movingRight is false, ie, if moving LEFT
         else
         {
             // Set the new x position of the platform to the the current x position of the platform,
-            // but moved to the RIGHT by an amount based off of the speed of the platform and the amount of time that has passed since FixedUpdate was last called.
-            newPosition.x = transform.position.x + (speed * Time.fixedDeltaTime);
-            // if the new position will place the platform to the RIGHT of the RIGHT-side boundary...
-            if (newPosition.x >= startPos.x + rightBoundary)
+            // but moved to the LEFT by an amount based off of the speed of the platform and the amount of time that has passed since FixedUpdate was last called.
+            newPosition.x = transform.position.x - (speed * Time.fixedDeltaTime);
+            // if the new position will place the platform to the left of the left-side boundary...
+            if (newPosition.x < startPos.x - distanceFromStart)
             {
-                // make it move LEFT on the next FixedUpdate by saying the the platform IS moving left
-                movingLeft = true; 
+                // make it move Right on the next FixedUpdate by saying the the platform is NOT moving left
+                movingRight = false;
             }
         }
-
         GetComponent<Rigidbody2D>().MovePosition(newPosition);
     }
-
-
 }
