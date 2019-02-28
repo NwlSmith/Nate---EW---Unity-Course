@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-<<<<<<< HEAD
-=======
+
 
     // Global Variable
     // go over what a variable is
     // stores a little bit of code that either says "yes", this is alive, or "no", this is not alive.
-    public bool alive = true;
->>>>>>> 1766178d58df8570c0f84735a74eec9425bef479
+    // public bool alive = true;
 
     // this is a reference to the rigidbody of our sprite
     // it contains variables for moving the gameobject, like velocity and force
@@ -37,61 +35,41 @@ public class Player : MonoBehaviour
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
-<<<<<<< HEAD
+        // if the player is still alive, allow input
+        // get input from the keyboard keys and store in float variable from -1 to 1
+        // -1 for left, +1 for right
+        // when there is no input, this value will go back to 0.
+        // A and D OR left and right arrows
         float moveHorizonal = Input.GetAxis("Horizontal");
+        // gets input from the keyboard keys Up and Down OR W and S
+        // only W is used.
+        // -1 for S, +1 for W
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 targetVelocity = rb.velocity;
+        // from the RigidBody2D, which stores variables regarding movement and physics
+        // store the current velocity of the player so we can modify it
+        // and later set the current velocity to this new modified target
+        Vector2 targetVelocity = rb2D.velocity;
 
+        // if the keyboard input gave us a value that is NOT 0,
+        // as in, if a button was pressed on the horizontal axis
         if (moveHorizonal != 0)
         {
+            // set the x component of the target velocity to the keyboard input directions (from -1 to 1)
+            // multiplied by the movement speed
             targetVelocity.x = moveHorizonal * horizontalSpeed;
         }
 
-        if (moveVertical > 0 && rb.velocity.y == 0)
+        // if the player is pressing the jump button, moveVertical will go to +1, so if the player presses jump
+        // and they are not either already jumping or falling
+        if (moveVertical > 0 && rb2D.velocity.y == 0)
         {
+            // set the vertical target velocity to the jump speed, which will make the object shoot upward
             targetVelocity.y = jumpSpeed;
-=======
-        // if the player is still alive, allow input
-        if (alive == true)
-        {
-            // get input from the keyboard keys and store in float variable from -1 to 1
-            // -1 for left, +1 for right
-            // when there is no input, this value will go back to 0.
-            // A and D OR left and right arrows
-            float moveHorizonal = Input.GetAxis("Horizontal");
-            // gets input from the keyboard keys Up and Down OR W and S
-            // only W is used.
-            // -1 for S, +1 for W
-            float moveVertical = Input.GetAxis("Vertical");
-
-            // from the RigidBody2D, which stores variables regarding movement and physics
-            // store the current velocity of the player so we can modify it
-            // and later set the current velocity to this new modified target
-            Vector2 targetVelocity = rb2D.velocity;
-
-            // if the keyboard input gave us a value that is NOT 0,
-            // as in, if a button was pressed on the horizontal axis
-            if (moveHorizonal != 0)
-            {
-                // set the x component of the target velocity to the keyboard input directions (from -1 to 1)
-                // multiplied by the movement speed
-                targetVelocity.x = moveHorizonal * horizontalSpeed;
-            }
-
-            // if the player is pressing the jump button, moveVertical will go to +1, so if the player presses jump
-            // and they are not either already jumping or falling
-            if (moveVertical > 0 && rb2D.velocity.y == 0)
-            {
-                // set the vertical target velocity to the jump speed, which will make the object shoot upward
-                targetVelocity.y = jumpSpeed;
-            }
-
-            // Finally, from the rigidbody, set the objects velocity to the new target velocity.
-            rb2D.velocity = targetVelocity;
->>>>>>> 1766178d58df8570c0f84735a74eec9425bef479
         }
 
-        rb.velocity = targetVelocity;
+        // Finally, from the rigidbody, set the objects velocity to the new target velocity.
+        rb2D.velocity = targetVelocity;
+
     }
 }
