@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // NEEDED FOR TEXT
 
 public class Player : MonoBehaviour {
 
@@ -12,14 +11,6 @@ public class Player : MonoBehaviour {
     // variable to store vertical speed of the player
     // the player will have their vertical velocity set to this value when jumping
     public float m_jumpSpeed = 10f;
-
-    // variable that will hold the current score
-    public int score = 0;
-
-    // text that the current score will be displayed on - NEED using UnityEngine.UI;
-    public Text scoreText;
-    // text that will say that the player lost - NEED using UnityEngine.UI;
-    public Text loseText;
 
     // Global Variable
     // go over what a variable is
@@ -35,8 +26,6 @@ public class Player : MonoBehaviour {
     {
         // get and store the rigid body 2d from this game object so we can change it
         rb2D = GetComponent<Rigidbody2D>();
-        // disable loseText so that it is not visible until the player loses
-        loseText.enabled = false;
     }
 
     // FixedUpdate is called once per physics frame
@@ -83,15 +72,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    // method that is called from coin to add points to the score and then display them on scoreText
-    public void AddPoints(int pointValue)
-    {
-        // score is incremented by increasing it by pointValue
-        score = score + pointValue;
-        // sets the text part of the text object to display current score
-        scoreText.text = "Score: " + score.ToString();
-    }
-
     // called when the player starts to collide with another object
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -100,18 +80,17 @@ public class Player : MonoBehaviour {
         {
             // parent the player to that platform.
             // this is to have the player move with the platform, because children move with their parents.
-            transform.parent = collision.transform;
+            //transform.parent = collision.transform;
         }
 
         // if the collision was with an enemy object
         if (collision.gameObject.tag == "Enemy")
         {
-            // enable the loseText so it is visible
-            loseText.enabled = true;
             // set alive to false so that the player cannot process input
             alive = false;
         }
     }
+
 
     // called when the player stops colliding with another object
     private void OnCollisionExit2D(Collision2D collision)

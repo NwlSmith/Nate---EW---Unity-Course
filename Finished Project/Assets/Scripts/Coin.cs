@@ -49,12 +49,6 @@ public class Coin : MonoBehaviour {
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<AudioSource>().Play();
             Destroy(gameObject, 0.2f); // long delay for teaching purposes
-
-            // v7 add sounds
-            // from the collision object, get the player script and call the AddPoints method.
-            collision.GetComponent<Player>().AddPoints(pointValue);
-
-
         }
     }
 

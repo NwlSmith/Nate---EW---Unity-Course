@@ -42,7 +42,7 @@ public class MovingObject : MonoBehaviour {
             if (newPosition.x > startPos.x + distanceFromStart)
             {
                 // make it move LEFT on the next FixedUpdate by saying the the platform IS moving left
-                movingRight = true;
+                movingRight = false;
             }
         }
         // if movingRight is false, ie, if moving LEFT
@@ -55,7 +55,7 @@ public class MovingObject : MonoBehaviour {
             if (newPosition.x < startPos.x - distanceFromStart)
             {
                 // make it move Right on the next FixedUpdate by saying the the platform is NOT moving left
-                movingRight = false;
+                movingRight = true;
             }
         }
         GetComponent<Rigidbody2D>().MovePosition(newPosition);
