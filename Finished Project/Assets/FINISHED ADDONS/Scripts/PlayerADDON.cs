@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerADDON : MonoBehaviour
 {
     // ADD TO PLAYER PREFAB
+    // have Player set canvas to enabled?
+    // add in press r to restart
 
     private Text loseText;
 
@@ -28,6 +31,15 @@ public class PlayerADDON : MonoBehaviour
         if (!GetComponent<Player>())
         {
             Debug.Log("ERROR: PlayerADDON Component placed on GameObject without Player Script.");
+        }
+    }
+
+    private void Update()
+    {
+        if (loseText.enabled)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

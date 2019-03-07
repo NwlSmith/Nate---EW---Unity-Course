@@ -359,7 +359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 62efe2b76aecc5148b4f00d8e37bd194, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf559916b08ebac4683952bc416eaf5e, type: 3}
   m_Color: {r: 1, g: 0.23113209, b: 0.23113209, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -395,6 +395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119758894522530702, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9119758894522530706, guid: c5b57f4d54da1a044b504708b9d6c746,
         type: 3}
@@ -501,6 +506,43 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9119758894522530705, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119758893968929657, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119758893968929657, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 660
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119758893968929657, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119758893968929657, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 371
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119758893968929658, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Game Over!
+
+        Press ''R'' to restart'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119758893968929658, guid: c5b57f4d54da1a044b504708b9d6c746,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5b57f4d54da1a044b504708b9d6c746, type: 3}
 --- !u!1 &519420028
@@ -539,7 +581,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.52799034, g: 0.70788085, b: 0.990566, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -810,7 +852,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 62efe2b76aecc5148b4f00d8e37bd194, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc81f7d120f52e74b89194a7369266d9, type: 3}
   m_Color: {r: 0.07075471, g: 1, b: 0.11311627, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1131,25 +1173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8ecb1f997de6d4a8bd4f36b87349cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &944482178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9119758894255939428, guid: c5b57f4d54da1a044b504708b9d6c746,
-    type: 3}
-  m_PrefabInstance: {fileID: 295437949}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &944482182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 944482178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1203234513d65be4993c1e8522fdb759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
 --- !u!1 &2098597029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,7 +1318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_horizontalSpeed: 10
   m_jumpSpeed: 10
-  score: 0
 --- !u!82 &2098597035
 AudioSource:
   m_ObjectHideFlags: 0
