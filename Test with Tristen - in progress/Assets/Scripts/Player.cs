@@ -25,6 +25,9 @@ public class Player : MonoBehaviour
     // the player will have their vertical velocity set to this value when jumping
     public float jumpSpeed = 10.0f;
 
+    // whether or not the player is alive
+    public bool alive = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,41 +38,57 @@ public class Player : MonoBehaviour
     // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
-        // if the player is still alive, allow input
-        // get input from the keyboard keys and store in float variable from -1 to 1
-        // -1 for left, +1 for right
-        // when there is no input, this value will go back to 0.
-        // A and D OR left and right arrows
-        float moveHorizonal = Input.GetAxis("Horizontal");
-        // gets input from the keyboard keys Up and Down OR W and S
-        // only W is used.
-        // -1 for S, +1 for W
-        float moveVertical = Input.GetAxis("Vertical");
-
-        // from the RigidBody2D, which stores variables regarding movement and physics
-        // store the current velocity of the player so we can modify it
-        // and later set the current velocity to this new modified target
-        Vector2 targetVelocity = rb2D.velocity;
-
-        // if the keyboard input gave us a value that is NOT 0,
-        // as in, if a button was pressed on the horizontal axis
-        if (moveHorizonal != 0)
+        if (alive == true)
         {
-            // set the x component of the target velocity to the keyboard input directions (from -1 to 1)
-            // multiplied by the movement speed
-            targetVelocity.x = moveHorizonal * horizontalSpeed;
-        }
+            // if the player is still alive, allow input
+            // get input from the keyboard keys and store in float variable from -1 to 1
+            // -1 for left, +1 for right
+            // when there is no input, this value will go back to 0.
+            // A and D OR left and right arrows
+            float moveHorizonal = Input.GetAxis("Horizontal");
+            // gets input from the keyboard keys Up and Down OR W and S
+            // only W is used.
+            // -1 for S, +1 for W
+            float moveVertical = Input.GetAxis("Vertical");
 
-        // if the player is pressing the jump button, moveVertical will go to +1, so if the player presses jump
-        // and they are not either already jumping or falling
-        if (moveVertical > 0 && rb2D.velocity.y == 0)
+            // from the RigidBody2D, which stores variables regarding movement and physics
+            // store the current velocity of the player so we can modify it
+            // and later set the current velocity to this new modified target
+            Vector2 targetVelocity = rb2D.velocity;
+
+            // if the keyboard input gave us a value that is NOT 0,
+            // as in, if a button was pressed on the horizontal axis
+            if (moveHorizonal != 0)
+            {
+                // set the x component of the target velocity to the keyboard input directions (from -1 to 1)
+                // multiplied by the movement speed
+                targetVelocity.x = moveHorizonal * horizontalSpeed;
+            }
+
+            // if the player is pressing the jump button, moveVertical will go to +1, so if the player presses jump
+            // and they are not either already jumping or falling
+            if (moveVertical > 0 && rb2D.velocity.y == 0)
+            {
+                // set the vertical target velocity to the jump speed, which will make the object shoot upward
+                targetVelocity.y = jumpSpeed;
+            }
+
+            // Finally, from the rigidbody, set the objects velocity to the new target velocity.
+            rb2D.velocity = targetVelocity;
+        }
+    }
+
+    // handle beginnings of collisions
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        // store the other tag
+        string otherTag = other.gameObject.tag;
+        // if the other tag is the enemy
+        if (otherTag == "Enemy")
         {
-            // set the vertical target velocity to the jump speed, which will make the object shoot upward
-            targetVelocity.y = jumpSpeed;
+            // disable controls
+            alive = false;
+            // game over text
         }
-
-        // Finally, from the rigidbody, set the objects velocity to the new target velocity.
-        rb2D.velocity = targetVelocity;
-
     }
 }
