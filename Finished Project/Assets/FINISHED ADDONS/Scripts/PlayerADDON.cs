@@ -14,6 +14,19 @@ public class PlayerADDON : MonoBehaviour
 
     private void Start()
     {
+        MonoBehaviour[] monoBehaviours = GetComponents<MonoBehaviour>();
+        bool found = false;
+        foreach (MonoBehaviour monoBehaviour in monoBehaviours)
+        {
+            if (monoBehaviour.GetType().Name == "Player")
+                found = true;
+        }
+
+        if (!found)
+        {
+            Debug.Log("ERROR: PlayerADDON Component placed on GameObject without Player Script, OR Player Script named incorrectly, must be named EXACTLY 'Player'.");
+        }
+
         Text[] texts = FindObjectsOfType<Text>();
         foreach (Text text in texts)
         {
@@ -26,11 +39,6 @@ public class PlayerADDON : MonoBehaviour
         if (loseText == null)
         {
             Debug.Log("ERROR: GameCanvas is not present in the scene.");
-        }
-
-        if (!GetComponent<Player>())
-        {
-            Debug.Log("ERROR: PlayerADDON Component placed on GameObject without Player Script.");
         }
     }
 
