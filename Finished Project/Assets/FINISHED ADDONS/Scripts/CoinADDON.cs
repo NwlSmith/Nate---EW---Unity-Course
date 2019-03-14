@@ -7,7 +7,7 @@ public class CoinADDON : MonoBehaviour
 {
     // ADD TO COIN PREFAB
 
-    public int pointValue = 0;
+    public int pointValue = 1;
     private Text scoreText;
     private ScoreADDON scoreADDON;
 
@@ -34,9 +34,6 @@ public class CoinADDON : MonoBehaviour
         {
             Debug.Log("ERROR: GameCanvas is not present in the scene.");
         }
-
-        if (pointValue == 0)
-            pointValue = 1;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

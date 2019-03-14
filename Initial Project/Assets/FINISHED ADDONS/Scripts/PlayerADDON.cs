@@ -58,6 +58,4 @@ public class PlayerADDON : MonoBehaviour
             loseText.enabled = true;
         }
     }
-
-
 }
