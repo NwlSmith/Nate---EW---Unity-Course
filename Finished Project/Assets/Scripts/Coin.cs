@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour {
 
-    // variable to store the point value of coin that will be given to the player when they pick it up
-    public int pointValue = 1;
-
     // this triggers when the gameobject collides with enything else that has a collider
     private void OnTriggerEnter2D(Collider2D collision)
     {
