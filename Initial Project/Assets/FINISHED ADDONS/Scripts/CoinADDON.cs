@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CoinADDON : MonoBehaviour
 {
     // ADD TO COIN PREFAB
+    // Handles adding score
 
     public int pointValue = 1;
     private Text scoreText;
@@ -27,7 +28,7 @@ public class CoinADDON : MonoBehaviour
             Debug.Log("ERROR: CoinADDON Component placed on GameObject without Coin Script, OR Coin Script named incorrectly, must be named EXACTLY 'Coin'.");
         }
 
-        Text[] texts = FindObjectsOfType<Text>();
+        //Text[] texts = FindObjectsOfType<Text>();
         scoreADDON = FindObjectOfType<ScoreADDON>();
         scoreText = scoreADDON.GetComponent<Text>();
         if (scoreText == null)
@@ -40,7 +41,7 @@ public class CoinADDON : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            scoreADDON.score += pointValue;
+            scoreADDON.AddPoints(pointValue);
             scoreText.text = "Score: " + scoreADDON.score.ToString();
         }
     }
