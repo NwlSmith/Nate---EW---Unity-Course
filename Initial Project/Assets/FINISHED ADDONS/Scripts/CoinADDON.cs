@@ -28,7 +28,6 @@ public class CoinADDON : MonoBehaviour
             Debug.Log("ERROR: CoinADDON Component placed on GameObject without Coin Script, OR Coin Script named incorrectly, must be named EXACTLY 'Coin'.");
         }
 
-        //Text[] texts = FindObjectsOfType<Text>();
         scoreADDON = FindObjectOfType<ScoreADDON>();
         scoreText = scoreADDON.GetComponent<Text>();
         if (scoreText == null)
@@ -42,7 +41,7 @@ public class CoinADDON : MonoBehaviour
         if (collision.tag == "Player")
         {
             scoreADDON.AddPoints(pointValue);
-            scoreText.text = "Score: " + scoreADDON.score.ToString();
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 }

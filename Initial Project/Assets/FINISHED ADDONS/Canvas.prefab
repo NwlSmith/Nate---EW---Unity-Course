@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  winIfCollectAllCoins: 1
+  winIfCollectAllCoins: 0
 --- !u!222 &9119758894255939432
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -16,22 +16,17 @@ public class ScoreADDON : MonoBehaviour
         if (winIfCollectAllCoins)
         {
             numCoins = GameObject.FindGameObjectsWithTag("Coin").Length;
-            Debug.Log("numcoins " + numCoins);
         }
     }
 
     public void AddPoints(int points)
     {
         score += points;
-        Debug.Log("Addpoints");
         if (winIfCollectAllCoins)
         {
-            Debug.Log("numcoins before " + numCoins);
             numCoins--;
-            Debug.Log("numcoins after " + numCoins);
             if (numCoins <= 0)
             {
-                Debug.Log("zerocoins");
                 FindObjectOfType<PlayerADDON>().WinGame();
             }
         }
