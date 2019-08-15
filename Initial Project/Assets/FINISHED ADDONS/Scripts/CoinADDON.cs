@@ -44,6 +44,7 @@ public class CoinADDON : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             scoreADDON.AddPoints(pointValue);
             scoreText.text = "Score: " + scoreADDON.score.ToString();
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 }
