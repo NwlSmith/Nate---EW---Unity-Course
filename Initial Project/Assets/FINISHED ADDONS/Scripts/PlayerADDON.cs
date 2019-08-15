@@ -54,7 +54,7 @@ public class PlayerADDON : MonoBehaviour
 
     private void Update()
     {
-        if (loseText.enabled || simpleRestart || winText.enabled)
+        if (simpleRestart || loseText.enabled || winText.enabled)
         {
             if (Input.GetKeyDown(KeyCode.R))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
