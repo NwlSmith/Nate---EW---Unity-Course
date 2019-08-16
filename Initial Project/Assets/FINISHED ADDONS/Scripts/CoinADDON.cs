@@ -41,7 +41,6 @@ public class CoinADDON : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            GetComponent<Collider>().enabled = false;
             scoreADDON.AddPoints(pointValue);
             scoreText.text = "Score: " + scoreADDON.score.ToString();
             GetComponent<Collider2D>().enabled = false;

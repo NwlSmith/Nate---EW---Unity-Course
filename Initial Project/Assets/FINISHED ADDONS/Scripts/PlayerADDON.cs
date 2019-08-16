@@ -54,6 +54,8 @@ public class PlayerADDON : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
         if (simpleRestart || loseText.enabled || winText.enabled)
         {
             if (Input.GetKeyDown(KeyCode.R))
